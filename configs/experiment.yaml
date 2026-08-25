@@ -1,0 +1,20 @@
+data:
+  path: null
+  sheet_name: null
+  datetime_column: null
+  target_column: null
+  target_candidates: [Radiation, radiation, SolarRadiation, solar_radiation, GHI, ghi, Irradiance, irradiance]
+  datetime_candidates: [datetime, date_time, timestamp, Timestamp, DateTime, Date, date, Time]
+columns: {temperature: null, humidity: null, pressure: null, wind_direction: null, wind_speed: null, sunrise: null, sunset: null}
+time: {expected_frequency: null, aggregation_frequency: null, forecast_horizons: [1], decomposition_period: null}
+split: {train_ratio: 0.6, validation_ratio: 0.2, test_ratio: 0.2, n_splits: 3, rolling_window: false}
+random: {seed: 42}
+features: {use_temporal_features: true, use_cyclical_features: true, use_lag_features: true, use_rolling_features: true, use_astronomical_features: false, max_lag: 3, rolling_windows: [3, 7], interactions: false}
+site: {latitude: null, longitude: null, altitude: null}
+models:
+  catboost: {enabled: true, trials: 10}
+  statistical: {enabled: true}
+  physical: {enabled: true}
+  machine_learning: {enabled: true}
+  global_forecasting: {enabled: true}
+evaluation: {metrics: [MAE, RMSE, R2, nRMSE, sMAPE], nrmse_denominator: range, daylight_only_evaluation: true, bootstrap_iterations: 500, significance_level: 0.05}
